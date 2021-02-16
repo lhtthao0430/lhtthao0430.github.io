@@ -8,4 +8,4 @@ At here, I write some write-up CTF I have done
 
 
 ### CTF
-[Dice](https://lhtthao0430.github.io/ctf/dice.md)
+[Dice](https://lhtthao0430.github.io/ctf/dice.html)
