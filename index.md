@@ -3,8 +3,8 @@
 At here, I write some write-up CTF I have done
 
 ### Challenge
-[Natas](https://lhtthao0430.github.io/challenge/natas.md)  
-[Websec](https://lhtthao0430.github.io/challenge/websec.md)
+[Natas](https://lhtthao0430.github.io/challenge/natas.html)  
+[Websec](https://lhtthao0430.github.io/challenge/websec.html)
 
 
 ### CTF
