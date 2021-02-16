@@ -1,6 +1,6 @@
 **web/Missing Flavortext**  
 We have https://missing-flavortext.dicec.tf and source code index.js  
-Review source, in line 34, it have filter ', let bypass it by using multiple input
+Review source, in line 34, it have filter ', let bypass it by using array input
 ```
 username[]
 ```
