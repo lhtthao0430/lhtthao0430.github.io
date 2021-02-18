@@ -36,3 +36,32 @@ p = n/q
 print(q)
 print(p)
 ```
+Have p and q, we can decode
+```
+def moduloInverse(a, m):
+    xa = 1
+    xm = 0
+    n = m
+    while m != 0:
+        q = a // m
+        xr = xa - q * xm
+        xa = xm
+        xm = xr
+        r = a % m
+        a = m
+        m = r
+    if xa < 0:
+        xa += n
+    return xa
+
+def findM(p, q, e, c):
+    phiN = (p - 1) * (q - 1)
+    d = moduloInverse(e, phiN)
+    print("d = ", d)
+    m = pow(c, d, n)
+    return m
+```
+Convert m to text, we get
+```
+KunCTF{AceBearCTF_1s_S000_Greattt_W1th_Kryptoo}
+```
