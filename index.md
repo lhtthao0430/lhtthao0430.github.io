@@ -1,6 +1,6 @@
 ## Welcome to my blog
 
-Just some writeup...
+Just some writeups...
 
 ### Web
 [Dice](https://lhtthao0430.github.io/web/dice.html)  
@@ -8,5 +8,5 @@ Just some writeup...
 [Natas](https://lhtthao0430.github.io/web/natas.html)  
 
 ### Crypto
+[KunCTF](https://lhtthao0430.github.io/crypto/kunctf.html)
 [CryptoHack](https://lhtthao0430.github.io/crypto/cryptohack.html)  
-[HCMUS](https://lhtthao0430.github.io/crypto/hcmus.html)
