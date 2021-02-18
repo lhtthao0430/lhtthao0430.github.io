@@ -1,6 +1,6 @@
 ## Welcome to my blog
 
-At here, I write some write-up CTF I have done
+Just some writeup...
 
 ### Challenge
 [Natas](https://lhtthao0430.github.io/challenge/natas.html)  

