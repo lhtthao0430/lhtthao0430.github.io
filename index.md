@@ -3,7 +3,7 @@
 Just some writeups...
 
 ### Web
-[Dice](https://lhtthao0430.github.io/web/dice.html)  
+[Dice](https://lhtthao0430.github.io/web/dice/dice.html)  
 [Websec](https://lhtthao0430.github.io/web/websec.html)  
 [Natas](https://lhtthao0430.github.io/web/natas.html)  
 

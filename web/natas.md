@@ -3,20 +3,20 @@
 username: natas0
 password: natas0
 ```
-Ctrl+U to view source code and got
+View source code and got
 ```
 username: natas1
 password: gtVrDuiDfck831PqWsLEZy5gyDz1clto 
 ```
 **[Natas01](http://natas1.natas.labs.overthewire.org)**    
-Ctrl+U to view source code and got
+View source code and got
 ```
 username: natas2
 password: ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi 
 ```
 
 **[Natas02](http://natas2.natas.labs.overthewire.org)**  
-Ctrl+U to view source code  
+View source code  
 In line 15, we have tag img src="files/pixel.png"  
 Check http://natas2.natas.labs.overthewire.org/files/ we got users.txt
 ```
@@ -25,7 +25,7 @@ password: sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
 ```
 
 **[Natas03](http://natas3.natas.labs.overthewire.org)**  
-Ctrl+U to view source code  
+View source code  
 We got hint
 ```
 No more information leaks!! Not even Google will find it this time...
