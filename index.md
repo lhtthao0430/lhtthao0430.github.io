@@ -8,3 +8,5 @@ Just some writeup...
 [Dice](https://lhtthao0430.github.io/web/dice.html)
 
 ### Crypto
+[CryptoHack](https://lhtthao0430.github.io/crypto/cryptohack.html)
+[HCMUS](https://lhtthao0430.github.io/crypto/hcmus.html)
