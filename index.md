@@ -2,10 +2,9 @@
 
 Just some writeup...
 
-### Challenge
-[Natas](https://lhtthao0430.github.io/challenge/natas.html)  
-[Websec](https://lhtthao0430.github.io/challenge/websec.html)
+### Web
+[Natas](https://lhtthao0430.github.io/web/natas.html)  
+[Websec](https://lhtthao0430.github.io/web/websec.html)
+[Dice](https://lhtthao0430.github.io/web/dice.html)
 
-
-### CTF
-[Dice](https://lhtthao0430.github.io/ctf/dice.html)
+### Crypto
