@@ -41,7 +41,7 @@ dice{sq1i_d03sn7_3v3n_3x1s7_4nym0r3}
 
 **[web/Web Utils](https://web-utils.dicec.tf/)**  
 We have source code [app.zip](https://lhtthao0430.github.io/web/dice/Web_Utils/app.zip)  
-In [app/route/api.js]((https://lhtthao0430.github.io/web/dice/Web_Utils/app/route/api.js), line 39 we have spread oparator
+In [app/route/api.js]((https://lhtthao0430.github.io/web/dice/Web_Utils/app/route/api.js), line 39 we have spread operator
 ```javascript
 database.addData({ type: 'paste', ...req.body, uid });
 ```
