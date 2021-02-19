@@ -55,7 +55,7 @@ result = long_to_bytes(m)
 print(result)
 ```
 
-**NaiveDecode**
+<!-- **NaiveDecode**
 ```
 import math 
 
@@ -224,4 +224,4 @@ else:
 print("A = ")
 print(A)
 print("B = ", B)
-```
+``` -->
