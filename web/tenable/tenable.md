@@ -76,4 +76,8 @@ for c in a:
 print(s)
 ```
 It's a png image  
-[img](https://lhtthao0430.github.io/web/tenable/FollowTheRabbitHole.png)
+![img](https://lhtthao0430.github.io/web/tenable/FollowTheRabbitHole.png)  
+We got
+```
+flag{automation_is_handy}
+```
