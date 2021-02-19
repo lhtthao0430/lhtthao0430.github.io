@@ -45,7 +45,7 @@ In [app/route/api.js]((https://lhtthao0430.github.io/web/dice/Web_Utils/app/rout
 ```javascript
 database.addData({ type: 'paste', ...req.body, uid });
 ```
-[View source](view-source:https://web-utils.dicec.tf/view/iuwnxMEs), in line 11 we have
+[View source](https://web-utils.dicec.tf/view/iuwnxMEs), in line 11 we have
 ```javascript
 if (type === 'link') return window.location = data;
 ```
