@@ -3,6 +3,8 @@
     test 123
 </body>
 <script type="text/javascript">
-    await fetch("https://44004c33ec97.ngrok.io", {method: "PUT"}).then(response => response.text()).then(res => document.body.innerText += res);
+    data = await fetch("https://44004c33ec97.ngrok.io", {method: "PUT"});
+    text = await data.text();
+    document.body.innerText += text;
 </script>
 </html>
