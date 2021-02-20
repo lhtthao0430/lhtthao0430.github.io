@@ -3,8 +3,11 @@
     test 123
 </body>
 <script type="text/javascript">
-    data = await fetch("https://44004c33ec97.ngrok.io", {method: "PUT"});
-    text = await data.text();
-    document.body.innerText += text;
+    async function load() {
+        data = await fetch("https://44004c33ec97.ngrok.io", {method: "PUT"});
+        text = await data.text();
+        document.body.innerText += text;
+    }
+    load();
 </script>
 </html>

@@ -101,3 +101,82 @@ We got the flag
 ```
 flag{xxe_aww_yeah}
 ```
+
+**[Source code](https://lhtthao0430.github.io/web/tenable/tenable-ctf-spring-mvc-app.zip) and [Web](http://challenges.ctfd.io:30542/) for Sprint MVC**  
+**Spring MVC 1**  
+After view source code, send GET request to http://challenges.ctfd.io:30542/main to get the flag
+```
+flag{flag1_517d74}
+```
+**Spring MVC 2**  
+Send POST request to http://challenges.ctfd.io:30542/main with body
+```
+magicWord=abc
+```
+```
+flag{flag2_de3981}
+```
+**Spring MVC 3**  
+Send POST request to http://challenges.ctfd.io:30542/main with body
+```
+magicWord=please
+```
+```
+flag{flag3_0d431e}
+```
+**Spring MVC 4**  
+Send post request to http://challenges.ctfd.io:30542/main with content-type
+```
+Content-type=application/json
+```
+```
+flag{flag4_695954}
+```
+**Spring MVC 5**  
+Send OPTIONS request to http://challenges.ctfd.io:30542/main with content-type
+```
+Content-type=application/json
+```
+```
+flag{flag5_70102b}
+```
+**Spring MVC 6**  
+Send GET request to http://challenges.ctfd.io:30542/main with headers
+```
+Magic-Word=please
+```
+```
+flag{flag6_ca1ddf}
+```
+**Spring MVC 7**  
+View source code tenable-ctf-spring-mvc-app\src\main\resources\templates\.hello.html, we see
+```html
+<p th:if="${name == 'please'}">
+<span class="hidden" th:text="${@flagService.getFlag('hidden_flag')}" />
+</p>
+```  
+Send GET request to http://challenges.ctfd.io:30542?name=please  
+```
+flag{hidden_flag_1dbc4}
+```
+**Spring MVC 8**  
+View source code tenable-ctf-spring-mvc-app\src\main\resources\templates\.hello.html, we see
+```html
+<p th:if="${#session.getAttribute('realName') == 'admin'}">
+<span th:text="${#session.getAttribute('sessionFlag')}" />
+</p>
+```  
+And we have other controller, that will set session realName for us
+```java
+@GetMapping("/other")
+public String index(@RequestParam(name="name", required=false, defaultValue="user") String realName, HttpSession session, Model model) {
+    session.setAttribute("realName", realName);
+    model.addAttribute("name", realName);
+    return "hello";
+}
+```
+Send GET request to http://challenges.ctfd.io:30542/other?name=admin  
+After that, send GET request to http://challenges.ctfd.io:30542/ and get the flag
+```
+flag{session_flag_0dac2c}
+```
